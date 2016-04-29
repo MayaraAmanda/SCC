@@ -30,7 +30,7 @@
                     <td><c:out value="${cursos.codigo}" /></td>
                     <td><c:out value="${cursos.nome}" /></td>
                     <td><c:out value="${cursos.palestrante}" /></td>
-                    <td><a href="FrontController?acao=ApagarCurso&codigo=<c:out value='${cursos.codigo}'/>">Excluir</a>&nbsp;&nbsp;
+                    <td><a href="FrontController?action=ApagarCurso&codigo=<c:out value='${cursos.codigo}'/>">Excluir</a>&nbsp;&nbsp;
                 </tr>
             </c:forEach>
         </table><br/><br/>

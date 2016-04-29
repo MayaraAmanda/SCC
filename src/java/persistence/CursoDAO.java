@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import model.Curso;
+import org.hibernate.JDBCException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
@@ -32,6 +33,14 @@ public class CursoDAO {
         Transaction transaction = session.beginTransaction();
         session.clear();
         session.save(curso);
+        transaction.commit();
+    }
+
+    public void delete(Curso curso) throws SQLException, ClassNotFoundException {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.clear();
+        session.delete(curso);
         transaction.commit();
     }
 
