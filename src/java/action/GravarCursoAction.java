@@ -14,16 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Curso;
 import persistence.CursoDAO;
+import sessao.Sessao;
 
 /**
  *
  * @author Mayara
  */
 public class GravarCursoAction implements Action {
-    
+
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        
+
+        if (Sessao.getSessao().getUsuario() == null) {
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+            view.forward(request, response);
+        }
+
         int codigo = Integer.parseInt(request.getParameter("codigo"));
         String nome = request.getParameter("nome");
         String descricao = request.getParameter("descricao");
@@ -33,22 +39,21 @@ public class GravarCursoAction implements Action {
         String hora = request.getParameter("hora");
         String laboratorio = request.getParameter("laboratorio");
         int vagas = Integer.parseInt(request.getParameter("vagas"));
-        
-            Curso curso = new Curso(codigo, nome, descricao, cargaHoraria, palestrante, data, hora, laboratorio, vagas);
-            try {
-                CursoDAO.getInstance().save(curso);
-                RequestDispatcher view = request.getRequestDispatcher("/cursos.jsp");
-                request.setAttribute("aux", "Gravado com sucesso");
-                view.forward(request, response);
-            } catch (ClassNotFoundException ex) {
-                ex.printStackTrace();
-                
-            } catch (SQLException ex) {
-                response.sendRedirect("erro.jsp");
-                
-                ex.printStackTrace();
-            }
+
+        Curso curso = new Curso(codigo, nome, descricao, cargaHoraria, palestrante, data, hora, laboratorio, vagas);
+        try {
+            CursoDAO.getInstance().save(curso);
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarCurso.jsp");
+            request.setAttribute("aux", "Gravado com sucesso");
+            view.forward(request, response);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+
+        } catch (SQLException ex) {
+            response.sendRedirect("erro.jsp");
+
+            ex.printStackTrace();
         }
-    
-    
+    }
+
 }

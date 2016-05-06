@@ -1,6 +1,6 @@
 <%-- 
-    Document   : matricula
-    Created on : 27/04/2016, 16:27:25
+    Document   : inicio
+    Created on : 02/05/2016, 15:36:07
     Author     : Mayara
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Erro</h1>
     </body>
 </html>

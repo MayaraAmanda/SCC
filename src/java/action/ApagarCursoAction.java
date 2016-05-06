@@ -5,7 +5,6 @@
  */
 package action;
 
-import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import controller.Action;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -17,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Curso;
 import persistence.CursoDAO;
+import sessao.Sessao;
 
 /**
  *
@@ -26,6 +26,11 @@ public class ApagarCursoAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        
+        if (Sessao.getSessao().getUsuario() == null) {
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+            view.forward(request, response);
+        }
 
         int codigo = Integer.parseInt(request.getParameter("codigo"));
 

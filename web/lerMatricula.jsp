@@ -1,13 +1,12 @@
 <%-- 
-    Document   : cursos
-    Created on : 03/05/2016, 10:57:44
+    Document   : matricula
+    Created on : 27/04/2016, 16:27:25
     Author     : Mayara
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,27 +19,27 @@
         <title>JSP Page</title>
     </head>
     <body>
-
-        <h4>Cursos Disponíveis:</h4>
-
+<h4>Você está cadastrado nos cursos:</h4>
         <table>
             <tr>
-                <th>Vagas</th>
-                <th>Nome</th>
-                <th>Palestrante</th>
-                <th>Matricular</th>
+                
+                <th><span>CURSO</span>
+                </th>
+                <th><span>REMOVER</span></th>
+
+
             </tr>
-            <c:forEach items="${cursos}" var="cursos">
+            <c:forEach items="${matriculas}" var="matricula">
                 <tr>
-                    <td><c:out value="${cursos.vagas}" /></td>
-                    <td><c:out value="${cursos.nome}" /></td>
-                    <td><c:out value="${cursos.palestrante}" /></td>
-                    <td><a href="FrontController?action=GravarMatricula&codigo=<c:out value='${cursos.codigo}'/>" class="glyphicon glyphicon-ok"></a>&nbsp;&nbsp;
+                    
+                    <td><c:out value="${matricula.curso.nome}" /></td>
+                    
+                    <td><a href="FrontController?action=ApagarMatricula&codigocurso=<c:out value='${matricula.curso.codigo}'/>&pagina=LerMatricula" class="glyphicon glyphicon-remove"></a>&nbsp;&nbsp;
                 </tr>
             </c:forEach>
         </table><br/><br/>
+        
         <p>${msg}</p>
         <a href="FrontController?action=VoltarInicio">Voltar</a>
-        <a href="FrontController?action=LerMatricula">Listar matriculas</a>
     </body>
 </html>

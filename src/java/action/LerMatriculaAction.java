@@ -14,33 +14,33 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Curso;
+import model.Matricula;
 import sessao.Sessao;
 
 /**
  *
  * @author Mayara
  */
-public class LerCursoAction implements Action {
+public class LerMatriculaAction implements Action {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
+  
         if (Sessao.getSessao().getUsuario() == null) {
             RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
             view.forward(request, response);
         }
-
+        
         try {
-            request.setAttribute("cursos", Curso.obterCursos());
-            RequestDispatcher view = request.getRequestDispatcher("/lercursos.jsp");
+            String curso = request.getParameter("codigo");
+            request.setAttribute("matriculas", Matricula.obterUsuariosMatriculados(curso));
+            RequestDispatcher view = request.getRequestDispatcher("lerMatricula.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LerCursoAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LerMatriculaAction.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
-            Logger.getLogger(LerCursoAction.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LerMatriculaAction.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-
 }

@@ -22,7 +22,7 @@
     <body>
         <div class="container">
             <form class="form-horizontal" action="FrontController?action=GravarCurso"
-                  method="post" name="cadastrarCursos" role="form">
+                  method="POST" name="cadastrarCursos" role="form">
                 <h2>Cadastro de Curso</h2>
                 <div class="form-group">
                     <label for="codigo" class="col-sm-3 control-label">	Código: </label>
@@ -83,6 +83,7 @@
                     <center>&nbsp; &nbsp; &nbsp; ${aux}</center><br>
 
                     <div class="col-sm-9 col-sm-offset-3">
+                         <button type="submit" class="btn btn-primary btn-block">Voltar</button>&nbsp;
                         <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
                     </div>
                 </div>
