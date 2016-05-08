@@ -20,7 +20,7 @@
             <h1>II Apresentação de Minicursos dos Alunos do BSI</h1>
         </hgroup>
         <form action="FrontController?action=LerUsuario" method="post" name="usuario">
-            <center><h3>Login</h3></center>
+            <center><h3>Efetuar Login</h3></center>
             <center>${msg}</center>
             <div class="group">
                 <input type="text" name="login"><span class="highlight"></span><span class="bar"></span>

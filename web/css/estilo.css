@@ -296,8 +296,15 @@ th {
 }
 
 .opcoes{
-  margin-top: 1em;
-  padding: 3em 2em 2em 2em;
+  
+  padding: 2em 2em 2em 2em;
   text-align: center;
   font-size: 20pt;
+}
+#matricula{
+    border-collapse: collapse;
+    width: 50%;
+    top:10%;
+    left:10%;
+    position: relative;
 }

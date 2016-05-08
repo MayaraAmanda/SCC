@@ -24,9 +24,9 @@
         </hgroup>
         <form>
             <center><h4>Você está cadastrado nos cursos:</h4></center>
-            <center>${msg}</center><br><br>
+            <center>${msg}</center>
 
-            <table><br><br>
+            <table id="matricula"><br><br>
                 <tr>
 
                     <th><span>Curso</span></th>

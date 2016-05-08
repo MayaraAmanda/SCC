@@ -1,10 +1,13 @@
 <%--
-    Document   : index
+    Document   : home
     Created on : 25/04/2016, 12:39:48
     Author     : Mayara
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html >
     <head>
@@ -22,12 +25,13 @@
             <center><h3>Bem vindo, ${usuario.nome}</h3></center>
             <div class="conteudo">
                 <div class="opcoes">
-                    <div  <c:if test="${usuario.tipousuario.id !=1}" hidden </c:if>><i class="fa fa-graduation-cap" aria-hidden="true"></i>&nbsp; <a href="cadastrarCurso.jsp"> Cadastrar Curso</a></div>
-                    <br><br>
+                    <div <c:if test="${usuario.tipousuario.id != 1}"> hidden </c:if>>
+                        <i class="fa fa-graduation-cap" aria-hidden="true" ></i>&nbsp; <a href="cadastrarCurso.jsp"> Cadastrar Curso</a></div>
+                    <br>
                     <i class="fa fa-list-alt" aria-hidden="true"></i>&nbsp; <a href="FrontController?action=LerCurso">Cursos disponíveis</a>
                     <br><br>
-                    <div  <c:if test="${usuario.tipousuario.id !=1}" hidden </c:if>> <i class="fa fa-user" aria-hidden="true"></i>&nbsp; <a href="FrontController?action=ListarUsuarios">Usuários cadastrados</a></div>
-                    <br><br>
+                    <div  <c:if test="${usuario.tipousuario.id != 1}"> hidden </c:if>> 
+                        <i class="fa fa-user" aria-hidden="true"></i>&nbsp; <a href="FrontController?action=ListarUsuarios">Usuários cadastrados</a></div>
 
                 </div>
                 <a href="FrontController?action=Logout">
