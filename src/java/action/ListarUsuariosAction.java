@@ -32,8 +32,7 @@ public class ListarUsuariosAction implements Action{
         }
         
         try {
-            String curso = request.getParameter("codigo");
-            request.setAttribute("usuarios", Matricula.obterUsuariosMatriculados(curso));
+            request.setAttribute("matriculas", Matricula.obterUsuariosMatriculados());
             RequestDispatcher view = request.getRequestDispatcher("listarUsuarios.jsp");
             view.forward(request, response);
 

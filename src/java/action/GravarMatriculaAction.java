@@ -39,7 +39,7 @@ public class GravarMatriculaAction implements Action {
             Usuario usuario = Usuario.obterUsuario(Sessao.getSessao().getUsuario().getMatricula());
             Matricula matricula = new Matricula(usuario, curso);
             if (MatriculaDAO.getInstance().save(matricula, curso, usuario) == true) {
-                Curso.update(matricula.getCurso(), matricula.getCurso().getVagas() - 1);
+                //Curso.update(matricula.getCurso(), matricula.getCurso().getVagas() - 1);
                 RequestDispatcher view = request.getRequestDispatcher("FrontController?action=LerCurso");
                 request.setAttribute("msg", "Matricula efetuada com sucesso");
                 view.forward(request, response);

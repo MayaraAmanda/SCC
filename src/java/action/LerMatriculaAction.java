@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Matricula;
+import persistence.MatriculaDAO;
 import sessao.Sessao;
 
 /**
@@ -32,8 +33,7 @@ public class LerMatriculaAction implements Action {
         }
         
         try {
-            String curso = request.getParameter("codigo");
-            request.setAttribute("matriculas", Matricula.obterUsuariosMatriculados(curso));
+            request.setAttribute("matriculas", Matricula.obterMatriculas());
             RequestDispatcher view = request.getRequestDispatcher("lerMatricula.jsp");
             view.forward(request, response);
         } catch (ClassNotFoundException ex) {

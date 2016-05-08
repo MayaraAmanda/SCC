@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : 05/05/2016, 13:29:29
     Author     : Mayara
@@ -10,11 +10,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Sistema de Cadastro de Curso</title>
-
+        <link rel="stylesheet" href="css/estilo.css">
         <link rel="stylesheet" href="css/style.css">
 
     </head>
-
     <body>
 
         <hgroup>
@@ -24,14 +23,14 @@
             <center><h3>Login</h3></center>
             <center>${msg}</center>
             <div class="group">
-                <input type="text" name="email"><span class="highlight"></span><span class="bar"></span>
-                <label>Email</label>
+                <input type="text" name="login"><span class="highlight"></span><span class="bar"></span>
+                <label>Login</label>
             </div>
             <div class="group">
                 <input type="password" name="senha"><span class="highlight"></span><span class="bar"></span>
                 <label>Senha</label>
 
-            </div>&nbsp; 
+            </div>&nbsp;
             <a href="cadastrarUsuario.jsp">
                 <input type="button" class="button buttonBlue" value="Cadastre-se" />
             </a>
@@ -41,7 +40,7 @@
         </form>
         <footer>
 
-            <p>Realização: 
+            <p>Realização:
                 <a href="https://www.facebook.com/CASIBSI/" target="_blank"><br>
                     <img src="img/casi.png"></a><br>
         </footer>

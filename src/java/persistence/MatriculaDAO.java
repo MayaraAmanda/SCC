@@ -40,6 +40,7 @@ public class MatriculaDAO {
             session.clear();
             session.save(matricula);
             transaction.commit();
+            Curso.update(matricula.getCurso(), matricula.getCurso().getVagas() - 1);
             //session.close();
             return true;
         } else {
@@ -125,11 +126,27 @@ public class MatriculaDAO {
         }
     }
 
-    public List<Matricula> obterUsuariosMatriculados(String curso) throws ClassNotFoundException, SQLException {
+    public List<Matricula> obterUsuariosMatriculados() throws ClassNotFoundException, SQLException {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.clear();
-        List<Matricula> matriculas = session.createQuery("from matriculas where curso_codigo = '%" + curso + "%'").list();
+        Transaction transaction = session.beginTransaction();
+        Connection conexao = DatabaseLocator.getInstance().getConnection();
+        String sqlString = "select * from matriculas order by curso_codigo";
+        PreparedStatement busca = conexao.prepareStatement(sqlString);
+        busca.execute();
+        ResultSet rs = busca.executeQuery();
+        List matriculas = new ArrayList();
+        Matricula matricula = null;
+        //if(rs.equals(null)) 
+        while (rs.next()) {
+            matricula = new Matricula(Usuario.obterUsuario(rs.getInt("usuario_matricula")), Curso.obterCurso(rs.getInt("curso_codigo")));
+            matriculas.add(matricula);
+        }
+
+        busca.close();
+        //session.getCacheMode();
+        transaction.commit();
+        session.close();
+
         return matriculas;
 
     }

@@ -31,7 +31,7 @@ public class LerUsuarioAction implements Action {
         try {
 
             String senha = pegaSenha(request.getParameter("senha"));
-            String email = request.getParameter("email");
+            String email = request.getParameter("login");
             Usuario usuario = Usuario.obterUsuario(email, senha);
             request.setAttribute("usuario", usuario);
             Sessao.getSessao().setUsuario(usuario);

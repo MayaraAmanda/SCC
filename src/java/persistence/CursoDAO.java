@@ -79,12 +79,13 @@ public class CursoDAO {
         try{
         Session session = HibernateUtil.getSessionFactory().openSession();
         Connection conexao = DatabaseLocator.getInstance().getConnection();
+        session.clear();
         String sqlString = "update curso set vagas = ? where codigo = ?";
         PreparedStatement busca = conexao.prepareStatement(sqlString);
         busca.setInt(1, vagas);
         busca.setInt(2, curso.getCodigo());
         busca.executeUpdate();
-
+        session.close();
     }catch(SQLException e){
         String msg = e.getMessage();
     }

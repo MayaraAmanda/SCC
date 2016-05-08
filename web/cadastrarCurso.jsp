@@ -59,7 +59,7 @@
                 <input type="text" name="vagas"><span class="highlight"></span><span class="bar"></span>
                 <label>Nº de Vagas</label>
             </div>&nbsp; 
-            <a href="index.jsp">
+            <a href="FrontController?action=VoltarInicio">
                 <input type="button" class="button buttonBlue" value="Voltar" />
             </a>
             <input type="submit" class="button buttonBlue" value="Cadastrar"/>

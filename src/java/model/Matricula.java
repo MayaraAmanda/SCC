@@ -73,8 +73,11 @@ public class Matricula implements java.io.Serializable {
         this.curso = curso;
     }
 
-    public static List<Matricula> obterUsuariosMatriculados(String curso) throws ClassNotFoundException, SQLException {
-        return MatriculaDAO.getInstance().obterUsuariosMatriculados(curso);
+    public static List<Matricula> obterUsuariosMatriculados() throws ClassNotFoundException, SQLException {
+        return MatriculaDAO.getInstance().obterUsuariosMatriculados();
     }
     
+    public static List<Matricula> obterMatriculas() throws ClassNotFoundException, SQLException{
+        return MatriculaDAO.getInstance().obterMatriculas();
+    }
 }

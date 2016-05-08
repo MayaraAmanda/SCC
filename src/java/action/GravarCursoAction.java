@@ -50,7 +50,9 @@ public class GravarCursoAction implements Action {
             ex.printStackTrace();
 
         } catch (SQLException ex) {
-            response.sendRedirect("erro.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("/cadastrarCurso.jsp");
+            request.setAttribute("aux", "Erro ao gravar registro");
+            view.forward(request, response);
 
             ex.printStackTrace();
         }
